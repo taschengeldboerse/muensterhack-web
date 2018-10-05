@@ -14,13 +14,14 @@ class Model(_Model):
 
 
 class User(Model):
-    adress = CharField()
+    address = CharField()
     name = CharField()
 
 
 class Task(Model):
     user = ForeignKeyField(User, related_name='tasks')
     title = CharField()
+    description = CharField(null=True)
     due_date = DateTimeField()
     STATUS_CHOICES = (
         (0, 'open'),
@@ -29,10 +30,10 @@ class Task(Model):
         (3, 'completed')
     )
     status = IntegerField(choices=STATUS_CHOICES)
-    description = CharField(null=True)
     estimated_time_in_minutes = IntegerField(null=True)
+    assignee = ForeignKeyField(User, related_name='assigned_tasks', null=True)
 
 
 class StandardTask(Model):
     title = CharField()
-    name = CharField()
+    description = CharField()

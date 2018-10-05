@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_potion import Api, ModelResource
+from flask_potion import Api, fields, ModelResource
 from flask_potion.contrib.peewee import PeeweeManager
 
 from severus.db import User, Task
@@ -25,6 +25,10 @@ class UserResource(ModelResource):
 class TaskResource(ModelResource):
     class Meta:
         model = Task
+
+    class Schema:
+        due_date = fields.DateString()
+        user = fields.ToOne(UserResource)
 
 
 api.add_resource(UserResource)
