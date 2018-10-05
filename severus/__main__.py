@@ -1,8 +1,10 @@
 from severus.app import app
+from severus.utils import initialize_database
 
 
 def main():
-    app.run(host='0.0.0.0')
+    initialize_database()
+    app.run(host='0.0.0.0', port=5000, debug=True, use_reloader=False)
 
 
 if __name__ == '__main__':

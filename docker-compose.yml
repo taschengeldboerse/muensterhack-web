@@ -16,6 +16,10 @@ services:
   app:
     restart: always
     build: .
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-12345678}@postgres:5432/${POSTGRES_DB:-taschengeldboerse}
+    links:
+      - postgres
     ports:
       - 5000:5000
     volumes:

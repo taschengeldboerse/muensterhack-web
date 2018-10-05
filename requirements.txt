@@ -4,14 +4,18 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-aniso8601==3.0.2          # via flask-restful
+aniso8601==3.0.2          # via flask-potion
+blinker==1.4              # via flask-potion
 click==7.0                # via flask
-flask-restful==0.3.6
+flask-potion==0.15.0
 flask==1.0.2
 itsdangerous==0.24        # via flask
 jinja2==2.10              # via flask
+jsonschema==2.6.0         # via flask-potion
 markupsafe==1.0           # via jinja2
-peewee==3.7.0
-pytz==2018.5              # via flask-restful
-six==1.11.0               # via flask-restful
+peewee==2.10.2
+psycopg2==2.7.5
+rfc3987==1.3.8            # via flask-potion
+six==1.11.0               # via flask-potion
+strict-rfc3339==0.7       # via flask-potion
 werkzeug==0.14.1          # via flask

@@ -1,6 +1,8 @@
 import os
 import subprocess
 
+from severus.db import db, Task, User, StandardTask
+
 
 def get_version():
     version = os.getenv('SEVERUS_VERSION')
@@ -17,3 +19,6 @@ def get_version():
     except FileNotFoundError:
         return 'unknown-dev-build'
 
+
+def initialize_database():
+    db.create_tables([Task, User, StandardTask], safe=True)
