@@ -20,6 +20,7 @@ services:
       - 5000:5000
     volumes:
       - .:/app
+    command: python -m severus
 
 volumes:
   postgres-data:
