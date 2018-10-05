@@ -3,7 +3,7 @@ from flask_cors import CORS
 from flask_potion import Api, fields, ModelResource
 from flask_potion.contrib.peewee import PeeweeManager
 
-from severus.db import Bid, User, Task
+from severus.db import Bid, User, Task, Category
 from severus.utils import get_version
 
 
@@ -35,6 +35,12 @@ class UserResource(ModelResource):
         name = 'users'
 
 
+class CategoryResource(ModelResource):
+    class Meta:
+        model = Category
+        name = 'categories'
+
+
 class TaskResource(ModelResource):
     class Meta:
         model = Task
@@ -59,3 +65,4 @@ class BidResource(ModelResource):
 api.add_resource(UserResource)
 api.add_resource(TaskResource)
 api.add_resource(BidResource)
+api.add_resource(CategoryResource)

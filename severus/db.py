@@ -19,6 +19,10 @@ class User(Model):
     name = CharField()
 
 
+class Category(Model):
+    name = CharField()
+
+
 class Task(Model):
     user = ForeignKeyField(User, related_name='tasks')
     title = CharField()
@@ -33,6 +37,7 @@ class Task(Model):
     status = IntegerField(choices=STATUS_CHOICES)
     estimated_time_in_minutes = IntegerField(null=True)
     assignee = ForeignKeyField(User, related_name='assigned_tasks', null=True)
+    category = ForeignKeyField(Category, related_name='tasks')
 
 
 class StandardTask(Model):
