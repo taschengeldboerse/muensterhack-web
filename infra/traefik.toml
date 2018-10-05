@@ -15,7 +15,7 @@ defaultEntryPoints = ["https","http"]
   address = ":8080"
     [entryPoints.traefik.auth.basic]
       # use http://www.htaccesstools.com/htpasswd-generator/
-      users = ["crossb0w:$apr1$2KFTEk8G$qFxN2sCy3oFNSgQUHZgwU0"]
+      users = ["pcrossb0w:$apr1$2KFTEk8G$qFxN2sCy3oFNSgQUHZgwU0"]
 
 [api]
 entryPoint = "traefik"

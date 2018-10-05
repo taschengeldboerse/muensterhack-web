@@ -19,6 +19,10 @@ services:
     command: python -m severus
     links:
       - postgres
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-12345678}@postgres:5432/${POSTGRES_DB:-taschengeldboerse}
     networks:
       - web
       - overlay

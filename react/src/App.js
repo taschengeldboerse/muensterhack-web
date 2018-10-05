@@ -10,7 +10,6 @@ class App extends Component {
       <div className="App">
         <header className="App-wrapper">
           <h2>
-            <i class="material-icons">monetization_on</i>
             Taschengeldboerse
           </h2>
 
@@ -18,10 +17,15 @@ class App extends Component {
             {tasks.map(task => {
               return (
                 <li className="task">
-                  <div className="category">Einkauf</div>
-                  <div className="distance">
-                    500 m
-                    <i class="material-icons">navigation</i>
+                  <div className="top">
+                    <div className="category">
+                      <i class="material-icons">shopping_cart</i>
+                      Einkauf
+                    </div>
+                    <div className="distance">
+                      500 m
+                      <i class="material-icons">navigation</i>
+                    </div>
                   </div>
                   <div className="title">
                     {task.title}
@@ -29,13 +33,15 @@ class App extends Component {
                   <div className="description">
                     {task.description}
                   </div>
-                  <div className="estimated_time">
-                    {task.estimated_time_in_minutes}
-                    <i class="material-icons">timer</i>
-                  </div>
-                  <div className="duedate">
-                    {new Date(task.duedate).toLocaleDateString()}
-                    <i class="material-icons">date_range</i>
+                  <div className="bottom">
+                    <div className="estimated_time">
+                      <i class="material-icons">timer</i>
+                      ca. {task.estimated_time_in_minutes} Minuten
+                    </div>
+                    <div className="duedate">
+                      bis zum {new Date(task.duedate).toLocaleDateString()}
+                      <i class="material-icons">date_range</i>
+                    </div>
                   </div>
                 </li>
               )
