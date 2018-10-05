@@ -3,9 +3,18 @@ import datetime as dt
 from severus.db import User, Task, StandardTask, Category
 
 df_user = [
-    {'name': 'Oma Müller', 'address': 'Hafenstraße 16, Münster 48153'},
-    {'name': 'Opa Müller', 'address': 'Hafenstraße 16, Münster 48153'},
-    {'name': 'Kind Tim', 'address': 'Hafenstraße 26, Münster 48153'}
+    {
+        'name': 'Oma Müller', 'address': 'Hafenstraße 16, Münster 48153',
+        'number': None, 'email': None, 'sex': None, 'age': None
+    },
+    {
+        'name': 'Opa Müller', 'address': 'Hafenstraße 16, Münster 48153',
+        'number': None, 'email': None, 'sex': None, 'age': None
+        },
+    {
+        'name': 'Kind Tim', 'address': 'Hafenstraße 26, Münster 48153',
+        'number': None, 'email': None, 'sex': None, 'age': None
+    }
 ]
 
 oma = User.create(name='Oma Müller', address='Hafenstraße 16, Münster 48153')

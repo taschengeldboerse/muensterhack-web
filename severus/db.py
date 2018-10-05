@@ -17,6 +17,10 @@ class Model(_Model):
 class User(Model):
     address = CharField()
     name = CharField()
+    number = IntegerField(null=True)
+    email = CharField(null=True)
+    sex = CharField(null=True)
+    age = CharField(null=True)
 
 
 class Category(Model):
