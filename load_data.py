@@ -21,12 +21,12 @@ df_task = [
     },
     {
         'user': oma, 'title': 'Staubsaugen', 'due_date': dt.datetime(2018, 10, 10),
-        'status': 3, 'description': 'Es wäre nett, wenn jemand meine 4 Zimmerwohnung staubsaugen könnte.',
+        'status': 0, 'description': 'Es wäre nett, wenn jemand meine 4 Zimmerwohnung staubsaugen könnte.',
         'estimated_time_in_minutes': 30, 'assignee': kind
     },
     {
         'user': opa, 'title': 'Rasenmähen', 'due_date': dt.datetime(2018, 10, 20),
-        'status': 2, 'description': None,
+        'status': 0, 'description': None,
         'estimated_time_in_minutes': 30, 'assignee': kind
     }
 

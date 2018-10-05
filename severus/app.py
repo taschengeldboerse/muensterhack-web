@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from flask_potion import Api, fields, ModelResource
 from flask_potion.contrib.peewee import PeeweeManager
 
@@ -7,8 +8,7 @@ from severus.utils import get_version
 
 
 app = Flask('severus')
-
-
+CORS(app)
 api = Api(app, default_manager=PeeweeManager)
 
 
