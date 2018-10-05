@@ -1,0 +1,44 @@
+debug = true
+
+logLevel = "INFO"
+defaultEntryPoints = ["https","http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+  [entryPoints.traefik]
+  address = ":8080"
+    [entryPoints.traefik.auth.basic]
+      # use http://www.htaccesstools.com/htpasswd-generator/
+      users = ["crossb0w:$apr1$2KFTEk8G$qFxN2sCy3oFNSgQUHZgwU0"]
+
+[api]
+entryPoint = "traefik"
+
+[retry]
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "taschengeldboerse.io"
+watch = true
+exposedbydefault = false
+
+[acme]
+email = "admin@crossbow.de"
+storage = "acme.json"
+caServer = "https://acme-staging-v02.api.letsencrypt.org/directory" # for testing purposes
+entryPoint = "https"
+[acme.httpChallenge]
+entryPoint = "http"
+
+[acme.dnsChallenge]
+  provider = "dnsimple"
+
+[[acme.domains]]
+  main = "*.taschengeldboerse.io"
+  sans = ["taschengeldboerse.io,traefik.taschengeldboerse.io"]
