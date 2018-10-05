@@ -2,7 +2,7 @@ import datetime
 import os
 
 from peewee import (
-    CharField, DateTimeField, ForeignKeyField, IntegerField, Model as _Model)
+    CharField, DateField, DateTimeField, ForeignKeyField, IntegerField, Model as _Model)
 from playhouse.db_url import connect
 
 
@@ -17,10 +17,10 @@ class Model(_Model):
 class User(Model):
     address = CharField()
     name = CharField()
-    number = IntegerField(null=True)
+    phone_number = CharField(null=True)
     email = CharField(null=True)
     sex = CharField(null=True)
-    age = CharField(null=True)
+    birthday = DateField(null=True)
 
 
 class Category(Model):
@@ -31,7 +31,7 @@ class Task(Model):
     user = ForeignKeyField(User, related_name='tasks')
     title = CharField()
     description = CharField(null=True)
-    due_date = DateTimeField()
+    due_date = DateField()
     STATUS_CHOICES = (
         (0, 'open'),
         (1, 'hidden'),
