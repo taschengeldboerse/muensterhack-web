@@ -1,3 +1,4 @@
 flask
-flask-restful
-peewee
+flask-potion
+peewee<3
+psycopg2
