@@ -17,6 +17,18 @@ def root():
     return get_version()
 
 
+class ToOneInteger(fields.ToOne):
+
+    def format(self, value):
+        return value.id
+
+
+class ToManyInteger(fields.ToMany):
+
+    def format(self, value):
+        return [x.id for x in value]
+
+
 class UserResource(ModelResource):
     class Meta:
         model = User
@@ -30,7 +42,8 @@ class TaskResource(ModelResource):
 
     class Schema:
         due_date = fields.DateString()
-        user = fields.ToOne(UserResource)
+        user = ToOneInteger(UserResource)
+        bids = ToManyInteger('bids')
 
 
 api.add_resource(UserResource)
