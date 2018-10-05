@@ -12,3 +12,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+ul.tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li.task {
+  padding: 12px;
+  min-width: 320px;
+
+  border: 1px solid #ccc;
+  box-shadow: 2px 3px 1px #000;
+  border-radius: 2px;
+  background-color: white;
+  font-size: 12px;
+}
+
+.distance i {
+  transform: rotate(45deg);
+}
+
+li.task:not(:last-child) {
+  margin-bottom: 1.2rem;
+}
