@@ -12,26 +12,30 @@ services:
       - overlay
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    #ports:
-    #  - 5432:5432
 
   app:
     restart: always
     build: .
     command: python -m severus
-    #ports:
-    #  - 5000:5000
-    #volumes:
-    #  - .:/app
     links:
       - postgres
     networks:
       - web
       - overlay
     labels:
-      traefik.basic.frontend.rule: "HostRegexp:{subdomain:[a-zA-Z0-9]+}.taschengeldboerse.io,www.taschengeldboerse.io,taschengeldboerse.io"
+      traefik.basic.frontend.rule: "Host:api.taschengeldboerse.io"
       traefik.basic.frontend.priority: "1"
       traefik.basic.port: "5000"
+      traefik.docker.network: web
+
+  web-app:
+    build: ./react
+    networks:
+      - web
+    labels:
+      traefik.frontend.rule: "Host:www.taschengeldboerse.io,taschengeldboerse.io"
+      traefik.mangeno.frontend.priority: "2"
+      traefik.mangeno.port: "8043"
       traefik.docker.network: web
 
   traefik:
