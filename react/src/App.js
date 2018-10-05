@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 
-// import ApiMock from './ApiMock';
-// const {tasks} = ApiMock;
-
-const renderTask = (task) => {
+const renderTask = (task, index) => {
   return (
-    <li className="task">
+    <li className="task" key={`task-${index}`}>
       <div className="top">
         <div className="category">
-          <i class="material-icons">shopping_cart</i>
+          <i className="material-icons">shopping_cart</i>
           Einkauf
         </div>
         <div className="distance">
           500 m
-          <i class="material-icons">navigation</i>
+          <i className="material-icons">navigation</i>
         </div>
       </div>
       <div className="title">
@@ -25,12 +22,12 @@ const renderTask = (task) => {
       </div>
       <div className="bottom">
         <div className="estimated_time">
-          <i class="material-icons">timer</i>
+          <i className="material-icons">timer</i>
           ca. {task.estimated_time_in_minutes} Minuten
         </div>
         <div className="duedate">
-          bis zum {new Date(task.duedate).toLocaleDateString()}
-          <i class="material-icons">date_range</i>
+          bis zum {new Date(task.due_date).toLocaleDateString()}
+          <i className="material-icons">date_range</i>
         </div>
       </div>
     </li>
@@ -51,7 +48,7 @@ class App extends Component {
   componentDidMount() {
     this.setState({ isLoading: true });
 
-    fetch('https://api.taschengeldboerse.io')
+    fetch('https://api.taschengeldboerse.io/tasks')
       .then(response => response.json())
       .then(tasks => this.setState({ tasks, isLoading: false }))
       .catch(err => this.setState({ isLoading: false }));
@@ -79,12 +76,10 @@ class App extends Component {
           <h2>
             Taschengeldboerse
           </h2>
-
           { isLoading ? <div className="loading-spinner"></div> :
             <ul className="tasks">
               {tasks.length > 0 ? this.state.tasks.map(renderTask) : null}
             </ul> }
-
         </header>
       </div>
     );
