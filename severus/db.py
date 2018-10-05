@@ -1,3 +1,4 @@
+import datetime
 import os
 
 from peewee import (
@@ -37,3 +38,9 @@ class Task(Model):
 class StandardTask(Model):
     title = CharField()
     description = CharField()
+
+
+class Bid(Model):
+    user = ForeignKeyField(User, related_name='bids')
+    task = ForeignKeyField(Task, related_name='bids')
+    timestamp = DateTimeField(default=datetime.datetime.utcnow)

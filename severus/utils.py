@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from severus.db import db, Task, User, StandardTask
+from severus.db import db, Bid, StandardTask, Task, User
 
 
 def get_version():
@@ -21,4 +21,4 @@ def get_version():
 
 
 def initialize_database():
-    db.create_tables([Task, User, StandardTask], safe=True)
+    db.create_tables([Task, User, Bid, StandardTask], safe=True)
