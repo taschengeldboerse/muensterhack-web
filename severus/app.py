@@ -20,11 +20,13 @@ def root():
 class UserResource(ModelResource):
     class Meta:
         model = User
+        name = 'users'
 
 
 class TaskResource(ModelResource):
     class Meta:
         model = Task
+        name = 'tasks'
 
     class Schema:
         due_date = fields.DateString()
