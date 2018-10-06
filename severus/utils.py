@@ -1,8 +1,6 @@
 import os
 import subprocess
 
-from severus.db import db, Bid, StandardTask, Task, User, Category
-
 
 def get_version():
     version = os.getenv('SEVERUS_VERSION')
@@ -18,7 +16,3 @@ def get_version():
         return '-'.join([branch, commit])
     except FileNotFoundError:
         return 'unknown-dev-build'
-
-
-def initialize_database():
-    db.create_tables([Task, User, Bid, StandardTask, Category], safe=True)
