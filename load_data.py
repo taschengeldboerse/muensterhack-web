@@ -79,8 +79,3 @@ for line in input_file:
 
 session.execute(Task.__table__.insert() ,task_list)
 session.commit()
-
-# df_standtask = [
-#     {'title': 'Rasenmähen', 'description': 'test'},
-#     {'title': 'Einkaufen', 'description': 'test'}
-# ]
