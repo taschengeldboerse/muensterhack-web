@@ -83,4 +83,3 @@ volumes:
 networks:
   overlay:
   web:
-    external: true

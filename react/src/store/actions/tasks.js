@@ -9,11 +9,12 @@ import {
 const backend = 'https://api.taschengeldboerse.io';
 const extractDataOrEmptyArray = (response) => (response.data) || [];
 
+export const showCreateForm = () => ({ type: SHOW_CREATE_FORM });
+
+
 function Sleep(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
-
-export const showCreateForm = () => ({ type: SHOW_CREATE_FORM });
 
 const mapCategoryToTask = (categories) => (task) => {
   task.category = categories.find(c => c.id === task.category);
