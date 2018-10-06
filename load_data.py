@@ -5,15 +5,15 @@ from severus.db import User, Task, StandardTask, Category
 df_user = [
     {
         'name': 'Oma Müller', 'address': 'Hafenstraße 16, Münster 48153',
-        'phone_number': None, 'email': None, 'sex': None, 'age': None
+        'phone_number': None, 'email': None, 'sex': None, 'birthday': None
     },
     {
         'name': 'Opa Müller', 'address': 'Hafenstraße 16, Münster 48153',
-        'phone_number': None, 'email': None, 'sex': None, 'age': None
-        },
+        'phone_number': None, 'email': None, 'sex': None, 'birthday': None
+    },
     {
         'name': 'Kind Tim', 'address': 'Hafenstraße 26, Münster 48153',
-        'phone_number': None, 'email': None, 'sex': None, 'age': None
+        'phone_number': None, 'email': None, 'sex': None, 'birthday': None
     }
 ]
 
