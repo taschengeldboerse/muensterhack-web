@@ -10,7 +10,7 @@
 
 ## Android-App
 
-![Android-App Screenshot](docs/demo-android-app.jpg =220x)
+![Android-App Screenshot](docs/demo-android-app.jpg =220x100)
 
 ## Web-App
 
