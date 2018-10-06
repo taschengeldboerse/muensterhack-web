@@ -1,3 +1,4 @@
+from flask import request
 from flask_cors import CORS
 from flask_jwt import JWT, jwt_required, current_identity
 from flask_login import current_user, login_required, LoginManager
@@ -9,7 +10,7 @@ from flask_principal import (
     RoleNeed)
 
 from severus.db import app, Bid, User, Task, Category
-from severus.utils import get_version
+from severus.utils import DEFAULT_LATLON, get_distance, get_latlon, get_version
 
 
 CORS(app)
@@ -69,16 +70,36 @@ def root():
     return get_version()
 
 
-class ToOneInteger(fields.ToOne):
+class ToOneIntegerField(fields.ToOne):
 
     def format(self, value):
         return value.id
 
 
-class ToManyInteger(fields.ToMany):
+class ToManyIntegerField(fields.ToMany):
 
     def format(self, value):
         return [x.id for x in value]
+
+
+class DistanceField(fields.PositiveInteger):
+
+    def _get_arg(self, arg, default=None):
+        return request.args.get(
+            arg,
+            request.headers.get(arg, default))
+
+    def format(self, value):
+        # XXX: Hotfix for old seeding data encoding issues
+        value = value.replace('Ã¼', 'ü')
+        value = value.replace('Ã', 'ß')
+        task_lat_lon = get_latlon(value)
+        # TODO: Use user address to determine default latlon
+        user_lat_lon = (
+            self._get_arg('lat', default=DEFAULT_LATLON[0]),
+            self._get_arg('lon', default=DEFAULT_LATLON[1]),
+        )
+        return super().format(get_distance(task_lat_lon, user_lat_lon))
 
 
 class UserResource(ModelResource):
@@ -90,7 +111,7 @@ class UserResource(ModelResource):
         }
 
     class Schema:
-        id = fields.Integer()
+        id = fields.Integer(io='r')
 
 
 class CategoryResource(ModelResource):
@@ -102,7 +123,7 @@ class CategoryResource(ModelResource):
         }
 
     class Schema:
-        id = fields.Integer()
+        id = fields.Integer(io='r')
 
 
 class TaskResource(ModelResource):
@@ -114,11 +135,12 @@ class TaskResource(ModelResource):
         }
 
     class Schema:
-        id = fields.Integer()
+        id = fields.Integer(io='r')
         due_date = fields.DateString()
-        category = ToOneInteger(CategoryResource)
-        user = ToOneInteger(UserResource)
-        bids = ToManyInteger('bids')
+        category = ToOneIntegerField(CategoryResource)
+        user = ToOneIntegerField(UserResource)
+        bids = ToManyIntegerField('bids')
+        distance_in_meters = DistanceField(io='r', attribute='location')
 
 
 class BidResource(ModelResource):
@@ -131,10 +153,10 @@ class BidResource(ModelResource):
         }
 
     class Schema:
-        id = fields.Integer()
-        user = ToOneInteger(UserResource)
-        task = ToOneInteger(TaskResource)
-        timestamp = fields.DateTimeString(nullable=True)
+        id = fields.Integer(io='r')
+        user = ToOneIntegerField(UserResource)
+        task = ToOneIntegerField(TaskResource)
+        timestamp = fields.DateTimeString(io='r')
 
 
 api.add_resource(UserResource)

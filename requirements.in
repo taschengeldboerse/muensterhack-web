@@ -5,5 +5,7 @@ flask-jwt
 flask-potion
 flask-principal
 flask-sqlalchemy
+geopy
 psycopg2
+requests
 sqlalchemy-utils
