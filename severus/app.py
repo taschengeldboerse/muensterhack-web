@@ -112,7 +112,7 @@ class BidResource(ModelResource):
     class Schema:
         user = ToOneInteger(UserResource)
         task = ToOneInteger(TaskResource)
-        timestamp = fields.DateTimeString()
+        timestamp = fields.DateTimeString(nullable=True)
 
 
 api.add_resource(UserResource)

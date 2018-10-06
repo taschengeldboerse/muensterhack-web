@@ -50,7 +50,8 @@ class Task(db.Model):
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.String)
     due_date = db.Column(db.Date, nullable=False)
-    status = db.Column(ChoiceType(STATUS_CHOICES), nullable=False)
+    status = db.Column(
+        ChoiceType(STATUS_CHOICES, impl=db.Integer()), nullable=False)
     estimated_time_in_minutes = db.Column(db.Integer)
     assignee_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     assignee = db.relationship(
