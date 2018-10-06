@@ -1,9 +1,9 @@
 from severus.app import app
-from severus.utils import initialize_database
+from severus.db import db
 
 
 def main():
-    initialize_database()
+    db.create_all()
     app.run(host='0.0.0.0', port=5000, debug=True, use_reloader=False)
 
 

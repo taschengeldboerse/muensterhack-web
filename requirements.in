@@ -1,5 +1,8 @@
 flask
 flask-cors
+flask-jwt
 flask-potion
-peewee<3
+flask-principal
+flask-sqlalchemy
 psycopg2
+sqlalchemy-utils
