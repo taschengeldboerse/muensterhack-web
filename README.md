@@ -28,7 +28,7 @@ docker-machine create \
 
 - then `eval $(docker-machine <NAME_OF_YOUR_CHOICE>)`
 - Your local Docker-Client is now connected to the Remote Machine 😱
-- Create files for Traefik (they should be persisted)
+- Adjust `infra/traefik.toml` for Traefik (they should be persisted)
 
 ```bash
 docker-machine ssh <SSH_KEY_OF_YOUR_CHOICE> mkdir -p /opt/traefik
