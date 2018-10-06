@@ -8,10 +8,6 @@
 
 ![Landingpage Screenshot](docs/demo-landing.png)
 
-## Android-App
-
-![Android-App Screenshot](docs/demo-android-app.jpg =220x100)
-
 ## Web-App
 
 ![Web-App Screenshot](docs/demo-web-app.png)
