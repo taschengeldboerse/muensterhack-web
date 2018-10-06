@@ -1,8 +1,8 @@
 flask
 flask-cors
+flask-jwt
 flask-potion
 flask-principal
-flask-security
 flask-sqlalchemy
 psycopg2
 sqlalchemy-utils

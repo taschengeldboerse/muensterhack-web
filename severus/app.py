@@ -1,5 +1,6 @@
 from flask_cors import CORS
-from flask_login import current_user, LoginManager
+from flask_jwt import JWT, jwt_required, current_identity
+from flask_login import current_user, login_required, LoginManager
 from flask_potion import Api, fields, ModelResource
 from flask_potion.contrib.alchemy import SQLAlchemyManager
 from flask_potion.contrib.principals import principals
@@ -24,14 +25,27 @@ api = Api(
 )
 
 
+def authenticate(username, password):
+    # TODO: Replace with real password check
+    if username == password:
+        return User.query.filter_by(name=username).first()
+
+
+def identity(payload):
+    return User.query.filter_by(id=payload['user_id']).first()
+
+
+jwt = JWT(app, authenticate, identity)
+
+
 @login_manager.request_loader
 def get_user(request):
     if request.authorization:
-        # TODO: replace with actual password check
+        # TODO: Check JWT
         username, password = (
             request.authorization.username, request.authorization.password)
         if username == password:
-            return User.get(User.name == username)
+            return User.query.filter_by(name=username).first()
     return None
 
 
