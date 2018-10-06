@@ -8,6 +8,10 @@
 
 ![Landingpage Screenshot](docs/demo-landing.png)
 
+## Android-App
+
+![Android-App Screenshot](docs/demo-android-app.png)
+
 ## Web-App
 
 ![Web-App Screenshot](docs/demo-web-app.png)
