@@ -7064,8 +7064,13 @@ label.panel-block {
   90% {
     stroke: #22dd99; } }
 
+html {
+  background-color: #fafafa; }
+
+body {
+  padding: 20px 0 40px 0; }
+
 .wrapper {
-  background-color: #fafafa;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

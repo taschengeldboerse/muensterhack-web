@@ -1,7 +1,14 @@
 @import './variables';
 
-.wrapper {
+html {
   background-color: #fafafa;
+}
+
+body {
+  padding: 20px 0 40px 0;
+}
+
+.wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;

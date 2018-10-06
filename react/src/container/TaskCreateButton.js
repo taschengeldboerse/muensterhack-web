@@ -6,7 +6,7 @@ class TaskCreateButton extends Component {
 
   render() {
     const { showCreateForm } = this.props;
-
+    return null;
     return (
       <button className="button is-primary fab-bottom" type="submit" onClick={showCreateForm}>
         Hilfe anfragen
