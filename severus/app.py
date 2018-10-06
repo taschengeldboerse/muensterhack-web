@@ -89,6 +89,9 @@ class UserResource(ModelResource):
             'update': 'admin',
         }
 
+    class Schema:
+        id = fields.Integer()
+
 
 class CategoryResource(ModelResource):
     class Meta:
@@ -97,6 +100,9 @@ class CategoryResource(ModelResource):
         permissions = {
             'create': 'admin',
         }
+
+    class Schema:
+        id = fields.Integer()
 
 
 class TaskResource(ModelResource):
@@ -108,6 +114,7 @@ class TaskResource(ModelResource):
         }
 
     class Schema:
+        id = fields.Integer()
         due_date = fields.DateString()
         category = ToOneInteger(CategoryResource)
         user = ToOneInteger(UserResource)
@@ -124,6 +131,7 @@ class BidResource(ModelResource):
         }
 
     class Schema:
+        id = fields.Integer()
         user = ToOneInteger(UserResource)
         task = ToOneInteger(TaskResource)
         timestamp = fields.DateTimeString(nullable=True)
