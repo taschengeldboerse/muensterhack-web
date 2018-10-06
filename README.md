@@ -10,7 +10,7 @@
 
 ## Android-App
 
-![Android-App Screenshot](docs/demo-android-app.png)
+![Android-App Screenshot](docs/demo-android-app.jpg)
 
 ## Web-App
 
