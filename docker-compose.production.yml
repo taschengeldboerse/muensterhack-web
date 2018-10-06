@@ -13,7 +13,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
-  app:
+  severus:
     restart: always
     build: .
     command: python -m severus
@@ -83,3 +83,4 @@ volumes:
 networks:
   overlay:
   web:
+    external: true

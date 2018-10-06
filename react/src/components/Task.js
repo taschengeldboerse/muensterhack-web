@@ -20,8 +20,8 @@ class Task extends Component {
           </div>
           {!!distance_in_meters ?
             <>
-              {distance_in_meters} m
               <div className="distance">
+                {distance_in_meters} m
                 <i className="material-icons">navigation</i>
               </div>
             </>
