@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import Task from './TaskList';
+import Task from './Task';
 
-class App extends Component {
+class TaskList extends Component {
   render() {
     const { tasks } = this.props;
 
+    if (!tasks) return null;
+
     return (
       <ul className="tasks">
-        {tasks.length > 0 ? this.state.tasks.map((task, index) => {
+        {tasks.length > 0 ? tasks.map((task, index) => {
           return (
             <li className="task" key={`task-${index}`}>
               <Task task={task} />
@@ -19,4 +21,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default TaskList;

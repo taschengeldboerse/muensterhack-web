@@ -1,0 +1,16 @@
+// auth
+export const AUTHENTICATED = 'AUTHENTICATED';
+export const UNAUTHENTICATED = 'UNAUTHENTICATED';
+export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
+export const SET_AVAILABLE = 'SET_AVAILABLE';
+
+// tasks
+export const FETCH_TASKS_START = 'FETCH_TASKS_START';
+export const FETCH_TASKS_SUCCESS = 'FETCH_TASKS_SUCCESS';
+export const FETCH_TASKS_FAILURE = 'FETCH_TASKS_FAILURE';
+
+// visual state
+export const SHOW_CREATE_FORM = 'SHOW_CREATE_FORM';
+
+// config
+export const RESTART = 'RESTART';
