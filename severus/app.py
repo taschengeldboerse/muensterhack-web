@@ -112,6 +112,7 @@ class UserResource(ModelResource):
 
     class Schema:
         id = fields.Integer(io='r')
+        bids = ToManyIntegerField('bids')
 
 
 class CategoryResource(ModelResource):
