@@ -3,23 +3,29 @@ import React, { Component } from 'react';
 class Task extends Component {
   render() {
     const {
-      title,
+      category,
       description,
-      estimated_time_in_minutes,
       due_date,
+      distance_in_meters,
+      estimated_time_in_minutes,
+      title,
     } = this.props.task;
 
     return (
       <>
         <div className="top">
           <div className="category">
-            <i className="material-icons">shopping_cart</i>
-            Einkauf
+            <i className="material-icons" style={{ color: category.color }}>{category.icon}</i>
+            {category.name}
           </div>
-          <div className="distance">
-            500 m
-            <i className="material-icons">navigation</i>
-          </div>
+          {!!distance_in_meters ?
+            <>
+              {distance_in_meters} m
+              <div className="distance">
+                <i className="material-icons">navigation</i>
+              </div>
+            </>
+            : null}
         </div>
         <div className="title">
           {title}

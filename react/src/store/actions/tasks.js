@@ -17,6 +17,21 @@ export const showCreateForm = () => ({ type: SHOW_CREATE_FORM });
 
 const mapCategoryToTask = (categories) => (task) => {
   task.category = categories.find(c => c.id === task.category);
+
+  const categoryIcons = {
+    1: { icon:'directions_walk', color: '#16A085' },
+    2: { icon:'shopping_cart', color: '#C0392B' },
+    3: { icon:'spa', color: '#4CAF50' },
+    4: { icon:'home', color: '#2980B9' },
+    5: { icon:'pets', color: '#795548' },
+    6: { icon:'computer', color: '#273C75' },
+    7: { icon:'people', color: '#757575' },
+  };
+
+  const { icon, color } = categoryIcons[task.category.id];
+  task.category.icon = icon;
+  task.category.color = color;
+
   return task;
 };
 

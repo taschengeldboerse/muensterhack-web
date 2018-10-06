@@ -37,6 +37,16 @@ services:
     networks:
       - web
     labels:
+      traefik.frontend.rule: "Host:web.taschengeldboerse.io"
+      traefik.mangeno.frontend.priority: "2"
+      traefik.mangeno.port: "8043"
+      traefik.docker.network: web
+
+  landingpage:
+    build: ./landing
+    networks:
+      - web
+    labels:
       traefik.frontend.rule: "Host:www.taschengeldboerse.io,taschengeldboerse.io"
       traefik.mangeno.frontend.priority: "2"
       traefik.mangeno.port: "8043"
