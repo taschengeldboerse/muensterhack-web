@@ -17,7 +17,7 @@ def get_or_create(session, model, defaults=None, **kwargs):
 
 # Users
 input_file = csv.DictReader(
-    io.open("data_examples/user_examples.csv", encoding='ISO-8859-1'),
+    io.open("data_examples/user_examples.csv", encoding='utf-8'),
     delimiter=';'
 )
 user_list = []
@@ -34,7 +34,7 @@ session.commit()
 
 # Category
 input_file = csv.DictReader(
-    io.open("data_examples/category_examples.csv", encoding='ISO-8859-1'),
+    io.open("data_examples/category_examples.csv", encoding='utf-8'),
     delimiter=';'
 )
 category_list = []
@@ -59,7 +59,7 @@ old_to_new_cat = {
 }
 
 input_file = csv.DictReader(
-    io.open("data_examples/task_examples.csv", encoding='ISO-8859-1'),
+    io.open("data_examples/task_examples.csv", encoding='utf-8'),
     delimiter=';'
 )
 task_list = []
