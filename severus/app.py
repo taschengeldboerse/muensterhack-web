@@ -48,6 +48,7 @@ class TaskResource(ModelResource):
 
     class Schema:
         due_date = fields.DateString()
+        category = ToOneInteger(CategoryResource)
         user = ToOneInteger(UserResource)
         bids = ToManyInteger('bids')
 
