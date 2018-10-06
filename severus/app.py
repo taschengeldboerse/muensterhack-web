@@ -90,9 +90,6 @@ class DistanceField(fields.PositiveInteger):
             request.headers.get(arg, default))
 
     def format(self, value):
-        # XXX: Hotfix for old seeding data encoding issues
-        value = value.replace('Ã¼', 'ü')
-        value = value.replace('Ã', 'ß')
         task_lat_lon = get_latlon(value)
         # TODO: Use user address to determine default latlon
         user_lat_lon = (
@@ -112,6 +109,7 @@ class UserResource(ModelResource):
 
     class Schema:
         id = fields.Integer(io='r')
+        bids = ToManyIntegerField('bids')
 
 
 class CategoryResource(ModelResource):
