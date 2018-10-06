@@ -63,6 +63,10 @@ class Task(db.Model):
     category = db.relationship(
         Category, backref=db.backref('tasks', lazy=True))
 
+    @property
+    def location(self):
+        return self.user.address
+
 
 class TaskTemplate(db.Model):
     __tablename__ = 'task_templates'
